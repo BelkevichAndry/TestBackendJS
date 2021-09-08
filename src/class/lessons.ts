@@ -1,14 +1,13 @@
 
 import {Request, Response} from "express";
 import {Lessons} from "../models/lesson.model";
-import {Model} from "sequelize";
 
 export class Lesson  {
-   public async getData(req: Request, res: Response){
+   public async getData(){
        try {
-           Lessons.findAll({raw:true}).then(users=>{
-               console.log(users);
-           }).catch(err=>console.log(err));
+          const lessons = await Lessons.findAll({raw:true})
+        //   return lessons пока я возвращаю такой массив тебе надо вернуть уроки
+          return [1,2,3]
        } catch (error){
            console.log(error);
        }
